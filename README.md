@@ -7,16 +7,12 @@ Cinemastar Client Library
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cinemastar-client', git: "http://github.com/naoto/cinemastar-client.git"
+gem 'cinemastar-client', git: "https://github.com/naoto/cinemastar-client.git"
 ```
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install cinemastar-client
 
 ## Configuration
 
@@ -31,7 +27,7 @@ Set envelopment.
 
 ## Usage
 
-- Search Movie:
+- Search:
     
     ```ruby
     videos = Cinemastar::Client::API.find("title")
