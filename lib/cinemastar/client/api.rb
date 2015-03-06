@@ -4,7 +4,7 @@ module Cinemastar::Client
   class API
 
     def self.find(target, page = 1)
-      Agent.new.get("search/#{page}.json", {"query" => target})
+      Agent.new.get("search/#{page}.json", {"query" => URI.encode(target)})
     end
 
     def self.category(path)
