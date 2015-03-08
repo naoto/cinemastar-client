@@ -32,8 +32,9 @@ Set envelopment.
     ```ruby
     videos = Cinemastar::Client::API.find("title")
     videos.each { |video|
-      video.title #=> "title 01"
-      video.path  #=> "http://example.com/video/title_01.m4v"
+      video.title     #=> "title 01"
+      video.path      #=> "http://example.com/video/title_01.m4v"
+      video.thumbnail #=> "http://example.com/thumbnail/title_01.m4v.jpg"
     }
     ```
 
@@ -44,6 +45,7 @@ Set envelopment.
     videos.each { |video|
       video.title #=> "title 01"
       video.path  #=> "http://example.com/video/title_01.m4v"
+      video.thumbnail #=> "http://example.com/thumbnail/title_01.m4v.jpg"
     }
     ```
 
@@ -54,6 +56,7 @@ Set envelopment.
     videos.each { |video|
       video.title #=> "title 01"
       video.path  #=> "http://example.com/video/title_01.m4v"
+      video.thumbnail #=> "http://example.com/thumbnail/title_01.m4v.jpg"
     }
     ```
 
