@@ -1,3 +1,25 @@
 #!/usr/bin/env ruby
 
 require 'cinemastar/client'
+require 'uri'
+require 'optparse'
+require 'json'
+
+opt = OptionParser.new
+
+opt.permute!(ARGV)
+
+movies = nil
+
+case ARGV.first
+when "latest"
+  movies = Cinemastar::Client::API.latest
+when "category"
+  movies = Cinemastar::Client::API.category
+when "find"
+  movies = Cinemastar::Client::API.find
+end
+
+movies.each do |movie|
+  puts URI.encode(movie.path) unless movie.title.nil?
+end
