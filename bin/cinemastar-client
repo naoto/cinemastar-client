@@ -30,5 +30,5 @@ end
 
 movies.each do |movie|
   path = URI.parse(URI.encode(movie.path))
-  puts "http://#{config("cinemastar_user")}:#{config("cinemastar_pass")}@#{path.host}#{path.path}" unless movie.title.nil?
+  puts URI.decode("http://#{config("cinemastar_user")}:#{config("cinemastar_pass")}@#{path.host}#{path.path}") unless movie.title.nil?
 end
