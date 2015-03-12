@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'pit'
 
 module Cinemastar::Client
   class Agent
@@ -15,10 +16,23 @@ module Cinemastar::Client
 
     private
       def load_config
-        { host: ENV['cinemastar_host'],
-          user: ENV['cinemastar_user'],
-          pass: ENV['cinemastar_pass']
+        { host: config('cinemastar_host'),
+          user: config('cinemastar_user'),
+          pass: config('cinemastar_pass')
         }
+      end
+
+      def config(val)
+        ENV[val] || pit(val)
+      end
+
+      def pit(val)
+        @pit ||= Pit.get("cinemastar", :require => {
+          "cinemastar_host" => "path.to.host",
+          "cinemastar_user" => "Cinemastar User",
+          "cinemastar_pass" => "Cinemastar Pass"
+        })
+        @pit[val]
       end
 
       def read(path)
