@@ -4,9 +4,17 @@ require 'cinemastar/client'
 require 'uri'
 require 'optparse'
 require 'json'
+require 'pit'
+
+def config(val)
+  ENV[val] || (@pit ||= Pit.get("cinemastar", :require => {
+    "cinemastar_host" => "host",
+    "cinemastar_user" => "user",
+    "cinemastar_pass" => "pass"
+  }))[val]
+end
 
 opt = OptionParser.new
-
 opt.permute!(ARGV)
 
 movies = nil
@@ -21,5 +29,6 @@ when "find"
 end
 
 movies.each do |movie|
-  puts URI.encode(movie.path) unless movie.title.nil?
+  path = URI.parse(URI.encode(movie.path))
+  puts URI.encode("http://#{config("cinemastar_user")}:#{config("cinemastar_pass")}@#{path.host}#{path.path}") unless movie.title.nil?
 end
