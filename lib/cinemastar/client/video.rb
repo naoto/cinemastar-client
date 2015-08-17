@@ -17,5 +17,9 @@ module Cinemastar::Client
       @thumbnail = "#{site}/thumbnail/#{thumbnail}"
     end
 
+    def category
+      File.dirname(@path).gsub(/^.+\//, '')
+    end
+
   end
 end
