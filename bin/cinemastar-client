@@ -25,7 +25,9 @@ when "latest"
 when "category"
   movies = Cinemastar::Client::API.category
 when "find"
-  movies = Cinemastar::Client::API.find
+  movies = Cinemastar::Client::API.find ARGV[1]
+when "title"
+  movies = Cinemastar::Client::API.title ARGV[1]
 end
 
 movies.each do |movie|

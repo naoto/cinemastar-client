@@ -35,8 +35,20 @@ Set envelopment.
       video.title     #=> "title 01"
       video.path      #=> "http://example.com/video/title_01.m4v"
       video.thumbnail #=> "http://example.com/thumbnail/title_01.m4v.jpg"
+      video.category #=> "title"
     }
     ```
+
+- Title Search:
+
+    ```ruby
+    videos = Cinemastar::Client::API.title("title")
+    videos.each { |video|
+      video.title #=> "title 01"
+      video.path  #=> "http://example.com/video/title/title_01.m4v"
+      video.thumbnail #=> "http://example.com/thumbnail/title/title_01.m4v.jpg"
+      video.category #=> "title"
+    }
 
 - Category:
     
@@ -46,6 +58,7 @@ Set envelopment.
       video.title #=> "title 01"
       video.path  #=> "http://example.com/video/title_01.m4v"
       video.thumbnail #=> "http://example.com/thumbnail/title_01.m4v.jpg"
+      video.category #=> "title"
     }
     ```
 
@@ -57,6 +70,7 @@ Set envelopment.
       video.title #=> "title 01"
       video.path  #=> "http://example.com/video/title_01.m4v"
       video.thumbnail #=> "http://example.com/thumbnail/title_01.m4v.jpg"
+      video.category #=> "title"
     }
     ```
 

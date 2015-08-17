@@ -15,5 +15,9 @@ module Cinemastar::Client
       Agent.new.get("latest")
     end
 
+    def self.title(target, page = 1)
+      Agent.new.get("title/#{page}.json", {"query" => URI.encode(target)})
+    end
+
   end
 end
