@@ -14,7 +14,9 @@ def config(val)
   }))[val]
 end
 
+options = {}
 opt = OptionParser.new
+opt.on('--output VAL', '-o VAL') { |o| options['outputs'] = o }
 opt.permute!(ARGV)
 
 movies = nil
@@ -31,6 +33,10 @@ when "title"
 end
 
 movies.each do |movie|
-  path = URI.parse(URI.encode(movie.path))
-  puts URI.decode("http://#{config("cinemastar_user")}:#{config("cinemastar_pass")}@#{path.host}#{path.path}") unless movie.title.nil?
+  if options['outputs'].nil?
+    path = URI.parse(URI.encode(movie.path))
+    puts URI.decode("http://#{config("cinemastar_user")}:#{config("cinemastar_pass")}@#{path.host}#{path.path}") unless movie.title.nil?
+  else
+    puts movie.send(options['outputs'])
+  end
 end
