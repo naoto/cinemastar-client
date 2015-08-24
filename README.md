@@ -49,6 +49,7 @@ Set envelopment.
       video.thumbnail #=> "http://example.com/thumbnail/title/title_01.m4v.jpg"
       video.category #=> "title"
     }
+    ```
 
 - Category:
     
@@ -73,4 +74,3 @@ Set envelopment.
       video.category #=> "title"
     }
     ```
-
