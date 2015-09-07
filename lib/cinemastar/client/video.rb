@@ -1,4 +1,5 @@
 require 'json'
+require 'time'
 
 module Cinemastar::Client
   class Video
@@ -7,7 +8,7 @@ module Cinemastar::Client
 
     def self.load_json(site, str)
       JSON.parse(str).map! { |f|
-        Video.new(site, f["title"], f["path"], f["thumbnail"], f["update_at"])
+        Video.new(site, f["title"], f["path"], f["thumbnail"], f["update_at"]) unless f["update_at"].nil?
       }
     end
 
@@ -15,7 +16,7 @@ module Cinemastar::Client
       @title = title
       @path = "#{site}#{path}"
       @thumbnail = "#{site}/thumbnail/#{thumbnail}"
-      @update_at = Time.at(update_at)
+      @update_at = Time.parse(update_at)
     end
 
     def category
