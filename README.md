@@ -50,7 +50,7 @@ Set envelopment.
       video.thumbnail #=> "http://example.com/thumbnail/title/title_01.m4v.jpg"
       video.category #=> "title"
       video.update_at #=> Time instance
-      video.sie #=> 13
+      video.size #=> 13
     }
     ```
 
